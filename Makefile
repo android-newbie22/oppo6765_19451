@@ -416,7 +416,15 @@ ifeq ($(OPPO_BUILD_ROOT_DISABLE_DM_VERITY),true)
 endif
 #endif /* VENDOR_EDIT */
 
-
+#ifdef VENDOR_EDIT
+#zhouhengguo@PSW.BSP.Kernel.Stablity, 2019/11/05, add daily build
+ifneq ($(TARGET_BUILD_VARIANT), user)
+KBUILD_CFLAGS   += -DOPPO_TARGET_BUILD_DAILY
+KBUILD_CPPFLAGS += -DOPPO_TARGET_BUILD_DAILY
+CFLAGS_KERNEL   += -DOPPO_TARGET_BUILD_DAILY
+CFLAGS_MODULE   += -DOPPO_TARGET_BUILD_DAILY
+endif
+#endif /*VENDOR_EDIT*/
 
 #ifdef VENDOR_EDIT
 #Tong.Han@Bsp.Group.Stability, 2017/07/28, Add for aging test version config
